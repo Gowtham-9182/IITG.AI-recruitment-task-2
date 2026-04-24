@@ -8,6 +8,8 @@ def make_features(pgcb_cleaned, weather_cleaned, economics_df):
     """
     df = pgcb_cleaned.copy()
     
+    df = df.drop(columns=['generation_mw','load_shedding'], 
+                 errors='ignore')
     # Calendar
     df['hour']       = df['datetime'].dt.hour
     df['dayofweek']  = df['datetime'].dt.dayofweek
